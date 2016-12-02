@@ -249,7 +249,8 @@ public class KurlingFX2 extends Application {
         ret.setId(s);
         ret.setFont(new Font("Arial Bold",aFoot*.45));
         ret.setOnAction(e->{
-            pg.savedShot.ReplayShot();
+            if(pg.savedShot != null){
+            pg.savedShot.ReplayShot();}
             });
         return ret;
     }
