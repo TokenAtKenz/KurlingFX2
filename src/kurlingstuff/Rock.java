@@ -221,13 +221,12 @@ public class Rock{
     } 
     
     private double friction(){//dish the ice
-        double f = baseFriction;
-        double ff = f*fricFrac;
-        double l = max[x]/2;
-        double n = Math.abs(center[x]-max[x]/2);
-        double c = n/l;
-        double p = (baseFriction+ff) - c*ff;
-        return p;
+        
+        double p;
+        double middle = max[x]/2;
+        double fricSpread = fricFrac * baseFriction;
+        p = baseFriction - (Math.abs(center[x] - middle)/middle * fricSpread);
+        return baseFriction;
     }
     private void deltaRock(){
        

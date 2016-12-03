@@ -90,7 +90,7 @@ public class KurlingFX2 extends Application {
     private Group bumpers;
     private Group theButtons;
     private int rocksInPlay = 0;
-    private final int initialRockSpeed= 2;
+    private final int initialRockSpeed= 1;
     private final int initialCurlSpeed= 0;
     private int currentEnd = 1;
     private int redScore = 0;
@@ -156,7 +156,7 @@ public class KurlingFX2 extends Application {
             ret.set("frameLenth",frameLength);
             ret.set("ofsX",ofsX*aFoot+padding);
             ret.set("ofsY",ofsY*aFoot+padding);
-            ret.set("baseFriction",(double)0.0067);//(aFoot * 0.001));
+            ret.set("baseFriction",(double)0.005);//(aFoot * 0.001));
             ret.set("curlFricFrac",(double)0.8); //curl friction % of friction
             ret.set("fricFrac",(double)0.30); //% friction variance to the edges
             ret.set("curlRatioSize",(double)0.15); //curl factor on forward motion
@@ -185,8 +185,8 @@ public class KurlingFX2 extends Application {
             //ret.set("player1","Player 1");
             //ret.set("player2","Player 2");
             //ret.set("sceneColor",Color.MIDNIGHTBLUE);
-            ret.set("maxSpeed",(double)7500);
-            ret.set("maxCurl",(double)8500);
+            ret.set("maxSpeed",(double)7000);
+            ret.set("maxCurl",(double)8000);
             //ret.set("sceneColor",Color.STEELBLUE);
             //ret.set("dnColor",Color.ROSYBROWN);
             //ret.set("hzColor",Color.ROSYBROWN);
@@ -379,7 +379,7 @@ public class KurlingFX2 extends Application {
         double locY = ofsY * aFoot + padding+stroke;
         Orientation o = Orientation.VERTICAL;  
         double max = (double)appParams.get("maxSpeed");
-        double min = 1500;
+        double min = 500;
         double minW = aFoot;
         double minH = buttonHeight*buttonCount+padding*paddingCount+2*aFoot+padding;
         ret.getChildren().add(mkScrollBar(locX,locY,o,max,min,minH,minW,"SpeedBar"));
