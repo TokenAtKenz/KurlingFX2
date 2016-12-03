@@ -109,7 +109,7 @@ public class KurlingFX2 extends Application {
         ofsY=1;
         mainScreenOffsetX = aFoot*25;
         mainScreenOffsetY = aFoot/2;
-        diameter =  3.25*aFoot/Math.PI;
+        diameter =  3.2*aFoot/Math.PI;
         buttonHeight = aFoot;
         padding = aFoot/4;
         radius = diameter/2;
@@ -156,9 +156,9 @@ public class KurlingFX2 extends Application {
             ret.set("frameLenth",frameLength);
             ret.set("ofsX",ofsX*aFoot+padding);
             ret.set("ofsY",ofsY*aFoot+padding);
-            ret.set("baseFriction",(double)0.005);//(aFoot * 0.001));
+            ret.set("baseFriction",(double)0.006);//(aFoot * 0.001));
             ret.set("curlFricFrac",(double)0.8); //curl friction % of friction
-            ret.set("fricFrac",(double)0.30); //% friction variance to the edges
+            ret.set("fricFrac",(double)0.15); //% friction variance to the edges
             ret.set("curlRatioSize",(double)0.15); //curl factor on forward motion
             ret.set("thud",(double).78);
             ret.set("gameType","SHOOT");
@@ -185,8 +185,8 @@ public class KurlingFX2 extends Application {
             //ret.set("player1","Player 1");
             //ret.set("player2","Player 2");
             //ret.set("sceneColor",Color.MIDNIGHTBLUE);
-            ret.set("maxSpeed",(double)7000);
-            ret.set("maxCurl",(double)8000);
+            ret.set("maxSpeed",(double)6500);
+            ret.set("maxCurl",(double)8500);
             //ret.set("sceneColor",Color.STEELBLUE);
             //ret.set("dnColor",Color.ROSYBROWN);
             //ret.set("hzColor",Color.ROSYBROWN);
@@ -810,6 +810,7 @@ public class KurlingFX2 extends Application {
          rocksInPlay++;
          if(theRock != null){
             setScrollBars(initialRockSpeed,initialCurlSpeed);
+            resetBroom();
             hackReel = pg.hackSequence(appParams,theRock);
             hackReel.setOnFinished(e->{//resetBroom();
                                 resetBroom();

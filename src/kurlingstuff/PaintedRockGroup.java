@@ -115,6 +115,7 @@ public class PaintedRockGroup extends Group{
         rocksOOB = 0;
         centerTheRocks(params);
         rocksOOB = 0;
+        savedShot = null;
     }
     public void doReset(KurlParams params){
         resetTheRocks(params);

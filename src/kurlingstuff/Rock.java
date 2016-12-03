@@ -179,7 +179,7 @@ public class Rock{
                 }
                 
                 double fp1 = getPrctOut(rockVector.angle,hitVector.angle);
-                double fp2 = getPrctOut(hitRock.rockVector.angle,hitRock.hitVector.angle);
+                //double fp2 = getPrctOut(hitRock.rockVector.angle,hitRock.hitVector.angle);
                 
                 
                 
@@ -201,16 +201,18 @@ public class Rock{
                 
                //****curl transfer section
                 final double c1Out = fp1 * curlVector.size * curlDir;
-                final double c1In = curlVector.size-c1Out * curlDir;
-                final double c2Out = fp1 * hitRock.curlVector.size *hitRock.curlDir;
-                final double c2In = hitRock.curlVector.size-c2Out * hitRock.curlDir;
-
-                if(c1Out > c2Out){hitRock.curlDir = curlDir;curlDir = -curlDir;}
-                else{curlDir = hitRock.curlDir;hitRock.curlDir = -hitRock.curlDir;}
+                final double c1In = (curlVector.size-c1Out) * curlDir;
+                final double c2Out = fp1 * hitRock.curlVector.size * -curlDir;
+                final double c2In = (hitRock.curlVector.size-c2Out) * -curlDir;
+                
                 curlDir = Math.signum(c1In+c2Out);
-                curlVector.size = Math.abs(c1In + c2Out)-friction();
+                curlVector.size = Math.abs(c1In + c2Out);
                 hitRock.curlDir = Math.signum(c1Out+c2In);
-                hitRock.curlVector.size = Math.abs(c1Out + c2In)-friction();
+                hitRock.curlVector.size = Math.abs(c1Out + c2In);
+                
+                //if(c1Out > c2Out){hitRock.curlDir = curlDir;curlDir = -curlDir;}
+                //else{curlDir = hitRock.curlDir;hitRock.curlDir = -hitRock.curlDir;}
+                
                 curlVector.setDelta();
                 hitRock.curlVector.setDelta();
 
@@ -223,10 +225,10 @@ public class Rock{
     private double friction(){//dish the ice
         
         double p;
-        double middle = max[x]/2;
+        double middle = min[x] + (max[x]-min[x])/2;
         double fricSpread = fricFrac * baseFriction;
         p = baseFriction - (Math.abs(center[x] - middle)/middle * fricSpread);
-        return baseFriction;
+        return p;
     }
     private void deltaRock(){
        
