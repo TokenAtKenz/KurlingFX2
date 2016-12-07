@@ -109,7 +109,7 @@ public class KurlingFX2 extends Application {
         ofsY=1;
         mainScreenOffsetX = aFoot*25;
         mainScreenOffsetY = aFoot/2;
-        diameter =  3.2*aFoot/Math.PI;
+        diameter =  3.25*aFoot/Math.PI;
         buttonHeight = aFoot;
         padding = aFoot/4;
         radius = diameter/2;
@@ -168,7 +168,7 @@ public class KurlingFX2 extends Application {
            //walls = TOP | BOTTOM | SIDES; //walls up
             walls = 0;
             ret.set("walls",walls);
-            double[] btnLoc = {(7+ofsX)*aFoot+padding-radius,
+            double[] btnLoc = {(7.5+ofsX)*aFoot+padding+stroke-radius,
                                   (23+ofsY)*aFoot+padding-radius};
             ret.set("btnLoc",btnLoc);
             double[] rockLoc = new double[2];
